@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+social-auth-app-django = "*"
+python-social-auth = "*"
+python-jose = "*"
+dj-database-url = "*"
+"psycopg2" = "*"
+selenium = "*"
+"bs4" = "*"
+ditto = "*"
+django-ditto = "*"
+social-auth-core = "*"
+twitter = "*"
+python-twitter = "*"
+django-facebook = "*"
+django-allauth = "*"
+django-sslserver = "*"
+facebook-sdk = "*"
+requests = "*"
+"oauth2" = "*"
+twython = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

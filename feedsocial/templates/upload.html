@@ -1,0 +1,105 @@
+
+<title>Post Data</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+article {
+    float: left;
+    padding: 20px;
+   width:1350px;
+    background-color: #f1f1f1;
+    height: 360px; 
+	
+	background-position: center;
+    background-repeat: no-repeat;
+	width:100%;
+	}
+
+
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.bg {
+    
+    background-image: url("img_girl.jpg");
+
+    
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+img.gp,img.fb,img.twi,img.insta{
+border-radius:50%;}
+
+
+
+
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+h1 {
+	color:white;
+	font-size: 100px;
+}
+h2 {
+	color:white;
+	font-size: 20px;
+}
+</style>
+<body 
+background="https://images.pexels.com/photos/14676/pexels-photo-14676.png?cs=srgb&dl=sky-night-dark-14676.jpg&fm=jpg">
+
+  <h1><center>Feed Social</h1>
+  <h2><center>Create a new update -:</h2>
+
+  <h2><center><a href="/home/">Go to Home</a></h2>
+ <center>
+      <form name = "form" action ="/post/"  
+         method = "POST" >{% csrf_token %}
+         
+         <div style = "max-width:470px;">
+            <center> 
+               <input type = "text" style = "margin-left:20%;" 
+                  placeholder = "Your Status" name = "text" />
+            </center>
+         </div>
+      
+         <br>
+         
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+                  value = "Submit" >
+                  <strong>Submit</strong>
+               </button>
+               
+            </center>
+         </div>
+         
+      </form>
+
+</center>
+</body>
+</html>

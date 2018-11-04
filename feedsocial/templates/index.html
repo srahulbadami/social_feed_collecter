@@ -1,0 +1,155 @@
+
+
+
+<title>Home</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+article {
+    float: left;
+    padding: 20px;
+   width:1350px;
+    background-color: #f1f1f1;
+    height: 360px; 
+  
+  background-position: center;
+    background-repeat: no-repeat;
+  width:100%;
+  }
+.button {
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.bg {
+    
+    background-image: url("img_girl.jpg");
+
+    
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+img.gp,img.fb,img.twi,img.insta{
+border-radius:50%;}
+
+
+
+
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+h1 {
+  color:white;
+  font-size: 120px;
+  font-family: 'Georgia';
+}
+h2 {
+  color:white;
+  font-size: 45px;
+  font-family: 'Georgia';
+}
+p {
+  color: white;
+}
+.tw{
+  color: #D8D2D1;
+  font-family: Georgia;
+}
+</style>
+<body 
+background="https://images.pexels.com/photos/14676/pexels-photo-14676.png?cs=srgb&dl=sky-night-dark-14676.jpg&fm=jpg">
+
+  <h1><center>Feed Social</center></h1>
+  {% block content %}
+  {% if twitter_login %}
+    <h2><center><a href="/postdata/" ><font class="tw">Tweet Something ?</font></a>:
+</center></h2>
+
+  {% endif %}
+
+
+  <p><center>  
+    {% if twitter_login %}
+   <a href="/twitter/">
+      <img class="twi" src="https://store-images.s-microsoft.com/image/apps.50484.9007199266244427.4d45042b-d7a5-4a83-be66-97779553b24d.2c71c1ea-c28f-4dd1-b72d-c43cdd3476f4?mode=scale&q=90&h=300&w=200"style="width:150px;height:150px" ></a>
+        <p>Connected as <a  href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" style="{color:#D8D2D1}" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
+      <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
+        {% csrf_token %}
+        <button class="button" type="submit">Disconnect - Twitter</button>
+      </form>
+  {% else %}
+  <a href="{% url 'social:begin' 'twitter' %}" > <img class="twi" src="https://store-images.s-microsoft.com/image/apps.50484.9007199266244427.4d45042b-d7a5-4a83-be66-97779553b24d.2c71c1ea-c28f-4dd1-b72d-c43cdd3476f4?mode=scale&q=90&h=300&w=200"style="width:150px;height:150px" ></a>
+<a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
+{% endif %}
+
+{% if google_login %}
+     <a href="/gplus/"><img class="gp"src="http://t2.gstatic.com/images?q=tbn:ANd9GcS-vXTCwSsiJdZgpFmBsTg4AsSVfC-GS1z0Cpa37iy33CZynag4" alt="g" style="width:150px;height:150px"></a></p>  
+     <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
+        {% csrf_token %}
+        <button class="button" type="submit">Disconnect - G+</button>
+      </form>
+      {% else %}
+      <a href="{% url 'social:begin' 'google-oauth2' %}"><img class="gp"src="http://t2.gstatic.com/images?q=tbn:ANd9GcS-vXTCwSsiJdZgpFmBsTg4AsSVfC-GS1z0Cpa37iy33CZynag4" alt="g" style="width:150px;height:150px"></a></p>  
+
+    <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
+  {% endif %}
+</center></p>
+{% endblock %}
+
+
+</body>
+</html>

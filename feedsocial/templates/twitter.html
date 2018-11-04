@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div{
+margin-top:-1px;
+padding-top:25
+padding-left:10px;
+padding-right:0px;
+margin:0px;
+
+background-color:black;
+overflow:hidden;
+}
+ul {
+	margin-right:-10px;
+    list-style-type: none;
+    margin-left:-1px;
+	margin:0px;
+    margin-top:-15px;
+	padding-left:10px;
+	padding-right:0px;
+    overflow: hidden;
+    background-color: black;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+font{
+font-size:130px;
+}
+.ig
+{
+	height:25px;
+	width:25px;
+	border-radius: 50%; 
+}
+.usr
+{
+	font-size: 25px;
+	font-family: Georgia;
+}
+.tweet
+{
+	font-size: 20px;
+	font-family: Georgia;
+}
+.nav
+{
+font-family:Georgia;
+font-size:20px;
+}
+</style>
+</head>
+<body>
+<div>
+<font color="white"><center>Social Feed</center></font>
+</div>
+<ul>
+  <li><a  href="/home/"><font class="nav">Home</font></a></li>
+  <li><a class="active" href="#"><font class="nav">Twitter</font></a></li>
+  <li><a href="/gplus/"><font class="nav">Google+</font></a></li>
+  <li><a href="/postdata/" ><font class="nav">Post a Data</font></a></li>
+</ul>
+
+{% for data in data %}
+<img class="ig" src={{data.user.profile_image_url}} />
+<font class="usr">{{data.user.name}}</font><br>
+<font class="tweet">{{data.text}}</font><br>
+<img src={{data.media.media_url}} alt="" />
+<br> 
+
+
+
+
+
+{% endfor %}
+
+</body>
+</html>	
